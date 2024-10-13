@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <main class="mt-5">
+    <section class="container">
+      <div class="table-responsive my-5">
+        <table class="table table-striped table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Berat Badan</th>
+              <th>Tinggi Badan</th>
+              <th>Usia Saat Ukur</th>
+              <th>Jenis Kelamin</th>
+              <th>Prediksi</th>
+              <th>Data Aktual</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for prediction in predictions %}
+            <tr>
+                <td>{{ prediction.index }}</td>
+                <td>{{ prediction.berat }}</td>
+                <td>{{ prediction.tinggi }}</td>
+                <td>{{ prediction.usia }}</td>
+                <td>{{ prediction.jenis_kelamin }}</td>
+                <td>{{ prediction.predicted }}</td>
+                <td>{{ prediction.actual }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <section class="my-3">
+        <h2>Model Evaluation</h2>
+        <p><strong>Accuracy:</strong> {{ accuracy|floatformat:2 }}</p>
+    
+        <h3>Confusion Matrix</h3>
+        <pre>{{ confusion_matrix }}</pre>
+    
+        <h3>Classification Report</h3>
+        <pre>{{ classification_report }}</pre>
+      </section>
+    </section>
+  </main>
+{% endblock content %}

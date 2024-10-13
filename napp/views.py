@@ -1,6 +1,9 @@
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from scipy.stats import pearsonr
+import numpy as np
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
+
 from django.shortcuts import render
 from django.contrib.staticfiles import finders
 
@@ -72,3 +75,54 @@ def correlation(request):
   }
   
   return render(request, 'correlation.html', context)
+
+def predict(request):
+  df = pd.read_csv(finders.find('data/test.csv'))
+  
+  # Features and target
+  x = df[
+    ['Berat_Badan', 'Tinggi_Badan', 'Usia_Saat_Ukur', 'Jenis_Kelamin'] # Fitur
+  ]
+  y = df['Status_Gizi_Balita'] # Target
+  
+  feature_weight = np.array([
+    0.35,
+    0.39,
+    -1.41,
+    0.16,
+  ]) # Weights given manually
+  bias = 0.61
+  
+  y_pred_manual = np.dot(x, feature_weight) + bias
+  y_pred_classified = np.where(y_pred_manual < 0, -1, 1)
+
+  label_mapping = {
+    1: 'Normal',
+    -1: 'Stunting'
+  }
+  
+  predictions = []
+  for i, (berat, tinggi, usia, jk, pred, actual) in enumerate(zip(
+    x['Berat_Badan'], x['Tinggi_Badan'], x['Usia_Saat_Ukur'], x['Jenis_Kelamin'], y_pred_classified, y), 1):
+    
+    pred_label = label_mapping[pred]
+    actual_label = label_mapping.get(actual, 'Tidak Terklasifikasi')
+    
+    predictions.append({
+        'index': i,
+        'berat': berat,
+        'tinggi': tinggi,
+        'usia': usia,
+        'jenis_kelamin': jk,
+        'predicted': pred_label,
+        'actual': actual_label
+    })
+
+  context = {
+    'predictions': predictions,
+    'accuracy': accuracy_score(y, y_pred_classified),
+    'confusion_matrix': confusion_matrix(y, y_pred_classified),
+    'classification_report': classification_report(y, y_pred_classified),
+  }
+  
+  return render(request, 'predict.html', context)

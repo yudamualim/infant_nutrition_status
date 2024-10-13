@@ -65,6 +65,39 @@
         "documentation": {}
     },
     {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "accuracy_score",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "confusion_matrix",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "classification_report",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
         "label": "render",
         "importPath": "django.shortcuts",
         "description": "django.shortcuts",
@@ -171,6 +204,15 @@
         "importPath": "napp.views",
         "description": "napp.views",
         "peekOfCode": "def correlation(request):\n  df = pd.read_csv(finders.find('data/trains.csv'))\n  columns_to_correlate = ['Berat_Badan', 'Tinggi_Badan', 'Usia_Saat_Ukur', 'Jenis_Kelamin']\n  # Change object data type into binary\n  df = pd.get_dummies(df, columns=['Jenis_Kelamin'])\n  # Update the list of columns to correlate to include the new one-hot encoded columns\n  columns_to_correlate = ['Berat_Badan', 'Tinggi_Badan', 'Usia_Saat_Ukur',] + [col for col in df.columns if 'Jenis_Kelamin' in col]\n  correlations = []\n  for col1 in columns_to_correlate:\n    for col2 in columns_to_correlate:",
+        "detail": "napp.views",
+        "documentation": {}
+    },
+    {
+        "label": "predict",
+        "kind": 2,
+        "importPath": "napp.views",
+        "description": "napp.views",
+        "peekOfCode": "def predict(request):\n  df = pd.read_csv(finders.find('data/test.csv'))\n  # Features and target\n  x = df[\n    ['Berat_Badan', 'Tinggi_Badan', 'Usia_Saat_Ukur', 'Jenis_Kelamin'] # Fitur\n  ]\n  y = df['Status_Gizi_Balita'] # Target\n  feature_weight = np.array([\n    0.35,\n    0.39,",
         "detail": "napp.views",
         "documentation": {}
     },
@@ -359,7 +401,7 @@
         "kind": 5,
         "importPath": "nutrition_app.urls",
         "description": "nutrition_app.urls",
-        "peekOfCode": "urlpatterns = [\n    # path('admin/', admin.site.urls),\n    path('', views.data_test),\n    path('data-test', views.data_test),\n    path('data-train', views.data_train),\n    path('correlation', views.correlation),\n]",
+        "peekOfCode": "urlpatterns = [\n    # path('admin/', admin.site.urls),\n    path('', views.data_test),\n    path('data-test', views.data_test),\n    path('data-train', views.data_train),\n    path('correlation', views.correlation),\n    path('predict', views.predict),\n]",
         "detail": "nutrition_app.urls",
         "documentation": {}
     },

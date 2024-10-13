@@ -81,6 +81,14 @@
         "documentation": {}
     },
     {
+        "label": "views",
+        "importPath": "napp",
+        "description": "napp",
+        "isExtraImport": true,
+        "detail": "napp",
+        "documentation": {}
+    },
+    {
         "label": "get_wsgi_application",
         "importPath": "django.core.wsgi",
         "description": "django.core.wsgi",
@@ -111,7 +119,7 @@
         "kind": 2,
         "importPath": "napp.views",
         "description": "napp.views",
-        "peekOfCode": "def data_test(request):\n  return render(request, '')",
+        "peekOfCode": "def data_test(request):\n  context = {\n    'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat velit illum odit inventore magnam nihil iure fuga mollitia cumque eum.',\n  }\n  return render(request, 'data_test.html', context)",
         "detail": "napp.views",
         "documentation": {}
     },
@@ -228,7 +236,7 @@
         "kind": 5,
         "importPath": "nutrition_app.settings",
         "description": "nutrition_app.settings",
-        "peekOfCode": "LANGUAGE_CODE = 'en-us'\nTIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "peekOfCode": "LANGUAGE_CODE = 'en-us'\nTIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = 'static/'\nSTATICFILES_DIRS = [\n    BASE_DIR / \"static\",\n]",
         "detail": "nutrition_app.settings",
         "documentation": {}
     },
@@ -237,7 +245,7 @@
         "kind": 5,
         "importPath": "nutrition_app.settings",
         "description": "nutrition_app.settings",
-        "peekOfCode": "TIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "peekOfCode": "TIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = 'static/'\nSTATICFILES_DIRS = [\n    BASE_DIR / \"static\",\n]\nSTATIC_ROOT = BASE_DIR / \"staticfiles\"",
         "detail": "nutrition_app.settings",
         "documentation": {}
     },
@@ -246,7 +254,7 @@
         "kind": 5,
         "importPath": "nutrition_app.settings",
         "description": "nutrition_app.settings",
-        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = 'static/'\nSTATICFILES_DIRS = [\n    BASE_DIR / \"static\",\n]\nSTATIC_ROOT = BASE_DIR / \"staticfiles\"\n# Default primary key field type",
         "detail": "nutrition_app.settings",
         "documentation": {}
     },
@@ -255,7 +263,7 @@
         "kind": 5,
         "importPath": "nutrition_app.settings",
         "description": "nutrition_app.settings",
-        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = 'static/'\nSTATICFILES_DIRS = [\n    BASE_DIR / \"static\",\n]\nSTATIC_ROOT = BASE_DIR / \"staticfiles\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field",
         "detail": "nutrition_app.settings",
         "documentation": {}
     },
@@ -264,7 +272,25 @@
         "kind": 5,
         "importPath": "nutrition_app.settings",
         "description": "nutrition_app.settings",
-        "peekOfCode": "STATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "peekOfCode": "STATIC_URL = 'static/'\nSTATICFILES_DIRS = [\n    BASE_DIR / \"static\",\n]\nSTATIC_ROOT = BASE_DIR / \"staticfiles\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "detail": "nutrition_app.settings",
+        "documentation": {}
+    },
+    {
+        "label": "STATICFILES_DIRS",
+        "kind": 5,
+        "importPath": "nutrition_app.settings",
+        "description": "nutrition_app.settings",
+        "peekOfCode": "STATICFILES_DIRS = [\n    BASE_DIR / \"static\",\n]\nSTATIC_ROOT = BASE_DIR / \"staticfiles\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "detail": "nutrition_app.settings",
+        "documentation": {}
+    },
+    {
+        "label": "STATIC_ROOT",
+        "kind": 5,
+        "importPath": "nutrition_app.settings",
+        "description": "nutrition_app.settings",
+        "peekOfCode": "STATIC_ROOT = BASE_DIR / \"staticfiles\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
         "detail": "nutrition_app.settings",
         "documentation": {}
     },
@@ -282,7 +308,7 @@
         "kind": 5,
         "importPath": "nutrition_app.urls",
         "description": "nutrition_app.urls",
-        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n]",
+        "peekOfCode": "urlpatterns = [\n    # path('admin/', admin.site.urls),\n    path('', views.data_test),\n]",
         "detail": "nutrition_app.urls",
         "documentation": {}
     },

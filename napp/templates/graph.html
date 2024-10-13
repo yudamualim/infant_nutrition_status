@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <main class="mt-5">
-    <section class="container">
+  <main class="mt-5 d-flex justify-content-center align-items-center">
+    <section class="container d-flex justify-content-center align-items-center">
       <div style="width: 800px;"><canvas id="graph"></canvas></div>
     </section>
   </main>
@@ -18,7 +18,7 @@
         ],
         datasets: [
           {
-            label: 'Test',
+            label: 'Grafik Data Testing',
             data: [
               {{ accuracy }},
               {{ precision }},

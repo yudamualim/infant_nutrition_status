@@ -107,6 +107,15 @@
         "documentation": {}
     },
     {
+        "label": "data_test",
+        "kind": 2,
+        "importPath": "napp.views",
+        "description": "napp.views",
+        "peekOfCode": "def data_test(request):\n  return render(request, '')",
+        "detail": "napp.views",
+        "documentation": {}
+    },
+    {
         "label": "application",
         "kind": 5,
         "importPath": "nutrition_app.asgi",
@@ -147,7 +156,7 @@
         "kind": 5,
         "importPath": "nutrition_app.settings",
         "description": "nutrition_app.settings",
-        "peekOfCode": "ALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n]",
+        "peekOfCode": "ALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'napp',",
         "detail": "nutrition_app.settings",
         "documentation": {}
     },
@@ -156,7 +165,7 @@
         "kind": 5,
         "importPath": "nutrition_app.settings",
         "description": "nutrition_app.settings",
-        "peekOfCode": "INSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n]\nMIDDLEWARE = [\n    'django.middleware.security.SecurityMiddleware',",
+        "peekOfCode": "INSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'napp',\n]\nMIDDLEWARE = [",
         "detail": "nutrition_app.settings",
         "documentation": {}
     },

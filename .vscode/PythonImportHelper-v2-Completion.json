@@ -57,6 +57,14 @@
         "documentation": {}
     },
     {
+        "label": "pearsonr",
+        "importPath": "scipy.stats",
+        "description": "scipy.stats",
+        "isExtraImport": true,
+        "detail": "scipy.stats",
+        "documentation": {}
+    },
+    {
         "label": "render",
         "importPath": "django.shortcuts",
         "description": "django.shortcuts",
@@ -154,6 +162,15 @@
         "importPath": "napp.views",
         "description": "napp.views",
         "peekOfCode": "def data_train(request):\n  data_train = pd.read_csv(finders.find('data/trains.csv'))\n  data_testing = pd.read_csv(finders.find('data/testings.csv'))\n  x_train, y_train = data_train.iloc[:, :-1], data_train.iloc[:, -1]\n  x_test, y_test = data_testing.iloc[:, :-1], data_testing.iloc[:, -1]\n  context = {\n    'x_train': x_train,\n    'y_train': y_train,\n    'x_test': x_test,\n    'y_test': y_test",
+        "detail": "napp.views",
+        "documentation": {}
+    },
+    {
+        "label": "correlation",
+        "kind": 2,
+        "importPath": "napp.views",
+        "description": "napp.views",
+        "peekOfCode": "def correlation(request):\n  df = pd.read_csv(finders.find('data/trains.csv'))\n  columns_to_correlate = ['Berat_Badan', 'Tinggi_Badan', 'Usia_Saat_Ukur', 'Jenis_Kelamin']\n  # Change object data type into binary\n  df = pd.get_dummies(df, columns=['Jenis_Kelamin'])\n  # Update the list of columns to correlate to include the new one-hot encoded columns\n  columns_to_correlate = ['Berat_Badan', 'Tinggi_Badan', 'Usia_Saat_Ukur',] + [col for col in df.columns if 'Jenis_Kelamin' in col]\n  correlations = []\n  for col1 in columns_to_correlate:\n    for col2 in columns_to_correlate:",
         "detail": "napp.views",
         "documentation": {}
     },
@@ -342,7 +359,7 @@
         "kind": 5,
         "importPath": "nutrition_app.urls",
         "description": "nutrition_app.urls",
-        "peekOfCode": "urlpatterns = [\n    # path('admin/', admin.site.urls),\n    path('', views.data_test),\n    path('data-test', views.data_test),\n    path('data-train', views.data_train),\n]",
+        "peekOfCode": "urlpatterns = [\n    # path('admin/', admin.site.urls),\n    path('', views.data_test),\n    path('data-test', views.data_test),\n    path('data-train', views.data_train),\n    path('correlation', views.correlation),\n]",
         "detail": "nutrition_app.urls",
         "documentation": {}
     },

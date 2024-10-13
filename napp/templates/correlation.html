@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <main class="mt-5">
+    <section class="container">
+      <div class="table-responsive my-5">
+        <table class="table table-striped table-bordered table-hover">
+          <thead>
+              <tr>
+                  <th>#</th>
+                  <th>Column 1</th>
+                  <th>Column 2</th>
+                  <th>Correlation</th>
+              </tr>
+          </thead>
+          <tbody>
+            {% for row in correlation %}
+              <tr>
+                  <td>{{ forloop.counter }}</td> <!-- forloop.counter automatically provides the row number -->
+                  <td>{{ row.column_1 }}</td>
+                  <td>{{ row.column_2 }}</td>
+                  <td>{{ row.correlation }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+{% endblock content %}

@@ -1,5 +1,6 @@
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
+from scipy.stats import pearsonr
 from django.shortcuts import render
 from django.contrib.staticfiles import finders
 
@@ -42,3 +43,32 @@ def data_train(request):
   }
 
   return render(request, 'data_train.html', context)
+
+def correlation(request):
+  df = pd.read_csv(finders.find('data/trains.csv'))
+  
+  columns_to_correlate = ['Berat_Badan', 'Tinggi_Badan', 'Usia_Saat_Ukur', 'Jenis_Kelamin']
+  
+  # Change object data type into binary
+  df = pd.get_dummies(df, columns=['Jenis_Kelamin'])
+  # Update the list of columns to correlate to include the new one-hot encoded columns
+  columns_to_correlate = ['Berat_Badan', 'Tinggi_Badan', 'Usia_Saat_Ukur',] + [col for col in df.columns if 'Jenis_Kelamin' in col]
+  
+  correlations = []
+  for col1 in columns_to_correlate:
+    for col2 in columns_to_correlate:
+      if col1 != col2:
+        try:
+          r, p = pearsonr(df[col1].dropna(), df[col2].dropna())
+          correlations.append((col1, col2, r))
+        except ValueError:
+          print(f"Error: {col1} and {col2} have NaN values.")
+          
+  correlation_df = pd.DataFrame(correlations, columns=['column_1', 'column_2', 'correlation'])
+  correlation_df = correlation_df.to_dict(orient='records')
+  
+  context = {
+    'correlation': correlation_df
+  }
+  
+  return render(request, 'correlation.html', context)

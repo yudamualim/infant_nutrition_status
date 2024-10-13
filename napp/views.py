@@ -126,3 +126,24 @@ def predict(request):
   }
   
   return render(request, 'predict.html', context)
+
+def graph(request):
+  # Prediction data
+  tp = 18
+  tn = 5
+  fp = 3
+  fn = 4
+
+  accuracy = (tp + tn) / (tp + tn + fp + fn)
+  precision = tp / (tp + fp)
+  recall = tp / (tp + fn)
+  # f1 = 2 * (precision * recall) / (precision + recall)
+  
+  context = {
+    'accuracy': accuracy,
+    'precision': precision,
+    'recall': recall,
+    # 'f1': f1
+  }
+  
+  return render(request, 'graph.html', context)

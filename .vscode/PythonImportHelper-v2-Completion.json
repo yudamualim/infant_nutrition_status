@@ -217,6 +217,15 @@
         "documentation": {}
     },
     {
+        "label": "graph",
+        "kind": 2,
+        "importPath": "napp.views",
+        "description": "napp.views",
+        "peekOfCode": "def graph(request):\n  # Prediction data\n  tp = 18\n  tn = 5\n  fp = 3\n  fn = 4\n  accuracy = (tp + tn) / (tp + tn + fp + fn)\n  precision = tp / (tp + fp)\n  recall = tp / (tp + fn)\n  # f1 = 2 * (precision * recall) / (precision + recall)",
+        "detail": "napp.views",
+        "documentation": {}
+    },
+    {
         "label": "application",
         "kind": 5,
         "importPath": "nutrition_app.asgi",
@@ -401,7 +410,7 @@
         "kind": 5,
         "importPath": "nutrition_app.urls",
         "description": "nutrition_app.urls",
-        "peekOfCode": "urlpatterns = [\n    # path('admin/', admin.site.urls),\n    path('', views.data_test),\n    path('data-test', views.data_test),\n    path('data-train', views.data_train),\n    path('correlation', views.correlation),\n    path('predict', views.predict),\n]",
+        "peekOfCode": "urlpatterns = [\n    # path('admin/', admin.site.urls),\n    path('', views.data_test),\n    path('data-test', views.data_test),\n    path('data-train', views.data_train),\n    path('correlation', views.correlation),\n    path('predict', views.predict),\n    path('graph', views.graph),\n]",
         "detail": "nutrition_app.urls",
         "documentation": {}
     },

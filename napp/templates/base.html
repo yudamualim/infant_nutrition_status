@@ -10,6 +10,8 @@
     <title>{% block title %}Nutrition App{% endblock %}</title>
 
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+    <script src="{% static 'js/chart.min.js' %}"></script>
   </head>
   <body>
     {% block content %}
@@ -17,6 +19,5 @@
     {% endblock %}
 
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/chart.min.js' %}"></script>
   </body>
 </html>

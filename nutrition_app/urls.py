@@ -25,4 +25,5 @@ urlpatterns = [
     path('data-train', views.data_train),
     path('correlation', views.correlation),
     path('predict', views.predict),
+    path('graph', views.graph),
 ]

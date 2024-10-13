@@ -24,4 +24,21 @@ def data_test(request):
     'x': x,
     'formatted_data': formatted_data
   }
+
   return render(request, 'data_test.html', context)  
+
+def data_train(request):
+  data_train = pd.read_csv(finders.find('data/trains.csv'))
+  data_testing = pd.read_csv(finders.find('data/testings.csv'))
+
+  x_train, y_train = data_train.iloc[:, :-1], data_train.iloc[:, -1]
+  x_test, y_test = data_testing.iloc[:, :-1], data_testing.iloc[:, -1]
+
+  context = {
+    'x_train': x_train,
+    'y_train': y_train,
+    'x_test': x_test,
+    'y_test': y_test
+  }
+
+  return render(request, 'data_train.html', context)

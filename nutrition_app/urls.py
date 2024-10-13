@@ -21,4 +21,6 @@ from napp import views
 urlpatterns = [
     # path('admin/', admin.site.urls),
     path('', views.data_test),
+    path('data-test', views.data_test),
+    path('data-train', views.data_train),
 ]

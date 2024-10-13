@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <main class="mt-5">
+    <section class="container">
+      <div class="table-responsive my-5">
+        <table class="table table-striped table-bordered table-hover">
+          <thead>
+              <tr>
+                  <th>X Train</th>
+                  <th>Y Train</th>
+                  <th>X Test</th>
+                  <th>Y Test</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>{{ x_train.shape }}</td>
+                  <td>{{ y_train.shape }}</td>
+                  <td>{{ x_test.shape }}</td>
+                  <td>{{ y_test.shape }}</td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+{% endblock content %}

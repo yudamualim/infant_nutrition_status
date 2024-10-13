@@ -1,9 +1,30 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <p>{{ x }}</p>
-  <div class="alert alert-warning alert-dismissible fade show" role="alert">
-    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
+  <main class="mt-5">
+    <section class="container">
+      <div class="table-responsive my-5">
+        <table class="table table-striped table-bordered table-hover">
+          <thead>
+              <tr>
+                  <th>Berat Badan</th>
+                  <th>Tinggi Badan</th>
+                  <th>Usia Saat Ukur</th>
+                  <th>Jenis Kelamin</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for row in formatted_data %}
+              <tr>
+                  <td>{{ row.0 }}</td>
+                  <td>{{ row.1 }}</td>
+                  <td>{{ row.2 }}</td>
+                  <td>{{ row.3 }}</td>
+              </tr>
+              {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
 {% endblock content %}

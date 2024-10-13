@@ -144,7 +144,7 @@
         "kind": 2,
         "importPath": "napp.views",
         "description": "napp.views",
-        "peekOfCode": "def data_test(request):\n  csv_path = finders.find('data/testings.csv')\n  df = pd.read_csv(csv_path, encoding='latin-1')\n  # # Data Standardization\n  scaler = StandardScaler()\n  x = df[\n    ['Berat_Badan', 'Tinggi_Badan', 'Usia_Saat_Ukur', 'Jenis_Kelamin']\n  ]\n  x = scaler.fit_transform(x)\n  context = {",
+        "peekOfCode": "def data_test(request):\n  csv_path = finders.find('data/testings.csv')\n  df = pd.read_csv(csv_path, encoding='latin-1')\n  # Data Standardization\n  scaler = StandardScaler()\n  x = df[\n    ['Berat_Badan', 'Tinggi_Badan', 'Usia_Saat_Ukur', 'Jenis_Kelamin']\n  ]\n  x = scaler.fit_transform(x)\n  # Format data with two decimal places",
         "detail": "napp.views",
         "documentation": {}
     },

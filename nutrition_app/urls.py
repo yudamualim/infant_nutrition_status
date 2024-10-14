@@ -29,5 +29,6 @@ urlpatterns = [
     path('graph', views.graph),
     path('person-form', person_form, name='person_form'),
     path('success/', views.success_view, name='success'),
+    path('index/person/', views.index_person),
 ]
 

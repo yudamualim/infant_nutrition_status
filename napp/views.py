@@ -167,3 +167,7 @@ def success_view(request):
     # Retrieve all records from the Person model
     people = Person.objects.all()
     return render(request, 'success.html', {'people': people})
+  
+def index_person(request):
+    people = Person.objects.all()
+    return render(request, 'index_person.html', {'people': people})

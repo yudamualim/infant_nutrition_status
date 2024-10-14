@@ -306,7 +306,16 @@
         "kind": 2,
         "importPath": "napp.views",
         "description": "napp.views",
-        "peekOfCode": "def success_view(request):\n    # Retrieve all records from the Person model\n    people = Person.objects.all()\n    return render(request, 'success.html', {'people': people})",
+        "peekOfCode": "def success_view(request):\n    # Retrieve all records from the Person model\n    people = Person.objects.all()\n    return render(request, 'success.html', {'people': people})\ndef index_person(request):\n    people = Person.objects.all()\n    return render(request, 'index_person.html', {'people': people})",
+        "detail": "napp.views",
+        "documentation": {}
+    },
+    {
+        "label": "index_person",
+        "kind": 2,
+        "importPath": "napp.views",
+        "description": "napp.views",
+        "peekOfCode": "def index_person(request):\n    people = Person.objects.all()\n    return render(request, 'index_person.html', {'people': people})",
         "detail": "napp.views",
         "documentation": {}
     },

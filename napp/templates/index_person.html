@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Data Status Gizi Balita</h1>
+
+{% if people %}
+    <main class="mt-5">
+      <section class="container">
+        <div class="table-responsive my-5">
+          <table class="table table-striped table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>NIK</th>
+                <th>Nama</th>
+                <th>Berat Badan</th>
+                <th>Tinggi Badan</th>
+                <th>Usia Saat Ukur</th>
+                <th>Jenis Kelamin</th>
+                <th>Status Gizi Balita</th>
+                <th>Opsi</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for person in people %}
+              <tr>
+                  <td>{{ forloop.counter }}</td> <!-- forloop.counter automatically provides the row number -->
+                  <td>{{ person.NIK }}</td>
+                  <td>{{ person.Nama }}</td>
+                  <td>{{ person.Berat_Badan }}</td>
+                  <td>{{ person.Tinggi_Badan }}</td>
+                  <td>{{ person.Usia_Saat_UKur }}</td>
+                  <td>{{ person.Jenis_Kelamin }}</td>
+                  <td>{{ person.Status_Gizi_Balita }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+{% else %}
+    <p>No person data found in the database.</p>
+{% endif %}
+{% endblock %}

@@ -36,20 +36,27 @@ def data_test(request):
   return render(request, 'data_test.html', context)  
 
 def data_train(request):
-  data_train = pd.read_csv(finders.find('data/trains.csv'))
-  data_testing = pd.read_csv(finders.find('data/testings.csv'))
+    # Baca file CSV
+    df = pd.read_csv(finders.find('data/trains.csv'), encoding='latin1')
 
-  x_train, y_train = data_train.iloc[:, :-1], data_train.iloc[:, -1]
-  x_test, y_test = data_testing.iloc[:, :-1], data_testing.iloc[:, -1]
+    x = df[['Berat_Badan', 'Tinggi_Badan', 'Usia_Saat_Ukur', 'Jenis_Kelamin']]
 
-  context = {
-    'x_train': x_train,
-    'y_train': y_train,
-    'x_test': x_test,
-    'y_test': y_test
-  }
+    # Standardize the data
+    scaler = StandardScaler()
+    x_standardized = scaler.fit_transform(x)
 
-  return render(request, 'data_train.html', context)
+    # Create a list of standardized data formatted to two decimal places
+    standardized_data = []
+    for row in x_standardized:
+        standardized_data.append([f'{value:.2f}' for value in row])
+
+    # Prepare context for rendering
+    context = {
+        'standardized_data': standardized_data,
+        'columns': ['Berat Badan', 'Tinggi Badan', 'Usia Saat Ukur', 'Jenis Kelamin'],  # Column headers
+    }
+
+    return render(request, 'data_train.html', context)
 
 def correlation(request):
   df = pd.read_csv(finders.find('data/trains.csv'))

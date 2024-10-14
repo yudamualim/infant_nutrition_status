@@ -157,7 +157,7 @@ def person_form(request):
         form = PersonForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('success')  # Replace 'success' with your desired redirect
+            return redirect('index_person')  # Replace 'success' with your desired redirect
     else:
         form = PersonForm()
     

@@ -5,7 +5,7 @@ import numpy as np
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 from .models import Person
 
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.staticfiles import finders
 from .forms import PersonForm  # Use relative import for forms
 from django.shortcuts import redirect
@@ -171,3 +171,23 @@ def success_view(request):
 def index_person(request):
     people = Person.objects.all()
     return render(request, 'index_person.html', {'people': people})
+  
+def edit_person(request, person_id):
+    person = get_object_or_404(Person, id=person_id)
+
+    if request.method == 'POST':
+        form = PersonForm(request.POST, instance=person)
+        if form.is_valid():
+            form.save()
+            return redirect('index_person')  # Redirect to index_person after saving
+    else:
+        form = PersonForm(instance=person)
+
+    return render(request, 'edit_person.html', {'form': form, 'person': person})
+  
+def delete_person(request, person_id):
+    person = get_object_or_404(Person, id=person_id)
+    person.delete()
+    return redirect('index_person')  # Redirect to index_person after deletion
+
+

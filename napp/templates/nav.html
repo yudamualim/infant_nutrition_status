@@ -6,11 +6,11 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link active" href="/">Data Test</a>
-        <a class="nav-link" href="/data-train">Data Train</a>
-        <a class="nav-link" href="/correlation">Correlation</a>
-        <a class="nav-link" href="/predict">Prediction</a>
-        <a class="nav-link" href="/graph">Graph</a>
+        <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="/" {% if request.path == '/' %}aria-current="page"{% endif %}>Data Test</a>
+        <a class="nav-link {% if request.path == '/data-train' %}active{% endif %}" href="/data-train" {% if request.path == '/data-train' %}aria-current="page"{% endif %}>Data Train</a>
+        <a class="nav-link {% if request.path == '/correlation' %}active{% endif %}" href="/correlation" {% if request.path == '/correlation' %}aria-current="page"{% endif %}>Correlation</a>
+        <a class="nav-link {% if request.path == '/predict' %}active{% endif %}" href="/predict" {% if request.path == '/predict' %}aria-current="page"{% endif %}>Prediction</a>
+        <a class="nav-link {% if request.path == '/graph' %}active{% endif %}" href="/graph" {% if request.path == '/graph' %}aria-current="page"{% endif %}>Graph</a>
       </div>
     </div>
   </div>

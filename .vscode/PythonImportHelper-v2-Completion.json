@@ -1,5 +1,29 @@
 [
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "admin",
         "importPath": "django.contrib",
         "description": "django.contrib",
@@ -24,11 +48,11 @@
         "documentation": {}
     },
     {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
+        "label": "forms",
+        "importPath": "django",
+        "description": "django",
         "isExtraImport": true,
-        "detail": "django.db",
+        "detail": "django",
         "documentation": {}
     },
     {
@@ -106,6 +130,14 @@
         "documentation": {}
     },
     {
+        "label": "redirect",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
         "label": "finders",
         "importPath": "django.contrib.staticfiles",
         "description": "django.contrib.staticfiles",
@@ -155,6 +187,14 @@
         "documentation": {}
     },
     {
+        "label": "person_form",
+        "importPath": "napp.views",
+        "description": "napp.views",
+        "isExtraImport": true,
+        "detail": "napp.views",
+        "documentation": {}
+    },
+    {
         "label": "get_wsgi_application",
         "importPath": "django.core.wsgi",
         "description": "django.core.wsgi",
@@ -172,12 +212,39 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "napp.migrations.0001_initial",
+        "description": "napp.migrations.0001_initial",
+        "peekOfCode": "class Migration(migrations.Migration):\n    initial = True\n    dependencies = [\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='Person',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),\n                ('NIK', models.CharField(max_length=16)),",
+        "detail": "napp.migrations.0001_initial",
+        "documentation": {}
+    },
+    {
         "label": "NappConfig",
         "kind": 6,
         "importPath": "napp.apps",
         "description": "napp.apps",
         "peekOfCode": "class NappConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'napp'",
         "detail": "napp.apps",
+        "documentation": {}
+    },
+    {
+        "label": "PersonForm",
+        "kind": 6,
+        "importPath": "napp.forms",
+        "description": "napp.forms",
+        "peekOfCode": "class PersonForm(forms.ModelForm):\n    class Meta:\n        model = Person\n        fields = ['NIK', 'Nama', 'Berat_Badan', 'Tinggi_Badan', 'Usia_Saat_UKur', 'Jenis_Kelamin', 'Status_Gizi_Balita']\n        # Add widgets for better user experience\n        widgets = {\n            'NIK': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter NIK'}),\n            'Nama': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Name'}),\n            'Berat_Badan': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Enter Weight'}),\n            'Tinggi_Badan': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Enter Height'}),",
+        "detail": "napp.forms",
+        "documentation": {}
+    },
+    {
+        "label": "Person",
+        "kind": 6,
+        "importPath": "napp.models",
+        "description": "napp.models",
+        "peekOfCode": "class Person(models.Model):\n  NIK = models.CharField(max_length=16)\n  Nama = models.CharField(max_length=50)\n  Berat_Badan = models.FloatField()\n  Tinggi_Badan = models.FloatField()\n  Usia_Saat_UKur = models.IntegerField()\n  Jenis_Kelamin = models.CharField(max_length=1)\n  Status_Gizi_Balita = models.CharField(max_length=20)",
+        "detail": "napp.models",
         "documentation": {}
     },
     {
@@ -222,6 +289,24 @@
         "importPath": "napp.views",
         "description": "napp.views",
         "peekOfCode": "def graph(request):\n  # Prediction data\n  tp = 18\n  tn = 5\n  fp = 3\n  fn = 4\n  accuracy = (tp + tn) / (tp + tn + fp + fn)\n  precision = tp / (tp + fp)\n  recall = tp / (tp + fn)\n  f1 = 2 * (precision * recall) / (precision + recall)",
+        "detail": "napp.views",
+        "documentation": {}
+    },
+    {
+        "label": "person_form",
+        "kind": 2,
+        "importPath": "napp.views",
+        "description": "napp.views",
+        "peekOfCode": "def person_form(request):\n    if request.method == 'POST':\n        form = PersonForm(request.POST)\n        if form.is_valid():\n            form.save()\n            return redirect('success')  # Replace 'success' with your desired redirect\n    else:\n        form = PersonForm()\n    return render(request, 'person_form.html', {'form': form})\ndef success_view(request):",
+        "detail": "napp.views",
+        "documentation": {}
+    },
+    {
+        "label": "success_view",
+        "kind": 2,
+        "importPath": "napp.views",
+        "description": "napp.views",
+        "peekOfCode": "def success_view(request):\n    # Retrieve all records from the Person model\n    people = Person.objects.all()\n    return render(request, 'success.html', {'people': people})",
         "detail": "napp.views",
         "documentation": {}
     },
@@ -410,7 +495,7 @@
         "kind": 5,
         "importPath": "nutrition_app.urls",
         "description": "nutrition_app.urls",
-        "peekOfCode": "urlpatterns = [\n    # path('admin/', admin.site.urls),\n    path('', views.data_test),\n    path('data-test', views.data_test),\n    path('data-train', views.data_train),\n    path('correlation', views.correlation),\n    path('predict', views.predict),\n    path('graph', views.graph),\n]",
+        "peekOfCode": "urlpatterns = [\n    # path('admin/', admin.site.urls),\n    path('', views.data_test),\n    path('data-test', views.data_test),\n    path('data-train', views.data_train),\n    path('correlation', views.correlation),\n    path('predict', views.predict),\n    path('graph', views.graph),\n    path('person-form', person_form, name='person_form'),\n    path('success/', views.success_view, name='success'),",
         "detail": "nutrition_app.urls",
         "documentation": {}
     },

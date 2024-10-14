@@ -8,3 +8,4 @@ class Person(models.Model):
   Usia_Saat_UKur = models.IntegerField()
   Jenis_Kelamin = models.CharField(max_length=1)
   Status_Gizi_Balita = models.CharField(max_length=20)
+  

@@ -3,9 +3,13 @@ from sklearn.preprocessing import StandardScaler
 from scipy.stats import pearsonr
 import numpy as np
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
+from .models import Person
 
 from django.shortcuts import render
 from django.contrib.staticfiles import finders
+from .forms import PersonForm  # Use relative import for forms
+from django.shortcuts import redirect
+
 
 def data_test(request):
   csv_path = finders.find('data/testings.csv')
@@ -147,3 +151,19 @@ def graph(request):
   }
   
   return render(request, 'graph.html', context)
+
+def person_form(request):
+    if request.method == 'POST':
+        form = PersonForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('success')  # Replace 'success' with your desired redirect
+    else:
+        form = PersonForm()
+    
+    return render(request, 'person_form.html', {'form': form})
+
+def success_view(request):
+    # Retrieve all records from the Person model
+    people = Person.objects.all()
+    return render(request, 'success.html', {'people': people})

@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from napp import views
+from napp.views import person_form
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
@@ -26,4 +27,7 @@ urlpatterns = [
     path('correlation', views.correlation),
     path('predict', views.predict),
     path('graph', views.graph),
+    path('person-form', person_form, name='person_form'),
+    path('success/', views.success_view, name='success'),
 ]
+

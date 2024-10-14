@@ -221,7 +221,7 @@
         "kind": 2,
         "importPath": "napp.views",
         "description": "napp.views",
-        "peekOfCode": "def graph(request):\n  # Prediction data\n  tp = 18\n  tn = 5\n  fp = 3\n  fn = 4\n  accuracy = (tp + tn) / (tp + tn + fp + fn)\n  precision = tp / (tp + fp)\n  recall = tp / (tp + fn)\n  # f1 = 2 * (precision * recall) / (precision + recall)",
+        "peekOfCode": "def graph(request):\n  # Prediction data\n  tp = 18\n  tn = 5\n  fp = 3\n  fn = 4\n  accuracy = (tp + tn) / (tp + tn + fp + fn)\n  precision = tp / (tp + fp)\n  recall = tp / (tp + fn)\n  f1 = 2 * (precision * recall) / (precision + recall)",
         "detail": "napp.views",
         "documentation": {}
     },

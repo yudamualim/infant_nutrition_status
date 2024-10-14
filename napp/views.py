@@ -137,13 +137,13 @@ def graph(request):
   accuracy = (tp + tn) / (tp + tn + fp + fn)
   precision = tp / (tp + fp)
   recall = tp / (tp + fn)
-  # f1 = 2 * (precision * recall) / (precision + recall)
+  f1 = 2 * (precision * recall) / (precision + recall)
   
   context = {
     'accuracy': accuracy,
     'precision': precision,
     'recall': recall,
-    # 'f1': f1
+    'f1': f1,
   }
   
   return render(request, 'graph.html', context)

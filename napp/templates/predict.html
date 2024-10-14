@@ -31,15 +31,21 @@
           </tbody>
         </table>
       </div>
-      <section class="my-3">
-        <h2>Model Evaluation</h2>
-        <p><strong>Accuracy:</strong> {{ accuracy|floatformat:2 }}</p>
-    
-        <h3>Confusion Matrix</h3>
-        <pre>{{ confusion_matrix }}</pre>
-    
-        <h3>Classification Report</h3>
-        <pre>{{ classification_report }}</pre>
+      <section class="my-3 py-2">
+        <div class="py-3">
+          <h2>Model Evaluation</h2>
+          <p><strong>Accuracy:</strong> {{ accuracy|floatformat:2 }}</p>
+        </div>
+
+        <div class="py-3">
+          <h3>Confusion Matrix</h3>
+          <pre>{{ confusion_matrix }}</pre>
+        </div>
+
+        <div class="py-3">
+          <h3>Classification Report</h3>
+          <pre>{{ classification_report }}</pre>
+        </div>
       </section>
     </section>
   </main>
